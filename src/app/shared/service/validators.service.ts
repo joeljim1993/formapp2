@@ -26,6 +26,25 @@ public isValidField(form:FormGroup,field:string){
 
 }
 
+getFieldError(form:FormGroup, field:string):string | null{
+  if( !form.controls[field] ) return null;
+
+  const errors =form.controls[field].errors || {};
+  console.log("errors",errors);
+
+  for ( const key of Object.keys(errors)) {
+  switch(key){
+    case 'required':
+      return 'Este campo es requerido';
+
+    case 'minlength':
+        return ` Minimo ${errors['minlength'].requiredLength } caracter.`;
+  }
+
+  }
+  return null;
+}
+
 
 }
 
