@@ -34,12 +34,17 @@ export class RegisterPageComponent {
 
 
 
+  },{
+    Validators:[
+      this.validatorsService.isFieldOneEqualFieldTwo('password','password2'),
+    ]
   })
 
   constructor(
     private fb:FormBuilder,
     private validatorsService:validatorsService,
     private emailValidators:EmailValidators,
+
     ){}
 
   isValidField(field:string){
